@@ -49,11 +49,46 @@
                 <span class="hide-menu">Register</span>
               </a>
             </li>
-            <!-- blog -->
-            <li class="nav-small-cap">
+             <!-- topic -->
+
+             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">BLOG</span>
+              <span class="hide-menu">TOPIC</span>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/addTopics" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Add Topic</span>
+              </a>
+            </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link" href="/subTopic" aria-expanded="false">
+                      <span>
+                        <i class="ti ti-login"></i>
+                      </span>
+                      <span class="hide-menu">Sub Topics</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link" href="/viewTopics" aria-expanded="false">
+                      <span>
+                        <i class="ti ti-login"></i>
+                      </span>
+                      <span class="hide-menu">View Topics</span>
+                    </a>
+                  </li>
+
+
+                  <!-- blog -->
+
+                  
+                  <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">BLOG</span>
+                  </li>
+                 
             <li class="sidebar-item">
               <a class="sidebar-link" href="/addBlog" aria-expanded="false">
                 <span>
@@ -158,21 +193,47 @@
       <!--  Header End -->
       <div class="container-fluid">
         <!--  Row 1 -->
-        <div class="row">
-          <% blogData.forEach(blog => { %>
-          <div class="col-md-4" style="width: 25%;">
-              <div class="card mb-4">
-                  <img src="../../<%= blog.blog_img %>" class="card-img-top" alt="<%= blog.title %>" style="height: 250px; border: 1px solid black;">
-                  <div class="card-body" style="border: 1px solid black; border-bottom-left-radius: 5%; border-bottom-right-radius: 5%;">
-                      <h5 class="card-title "><%= blog.title %></h5>
-                      <p class="card-text "><%= blog.content %></p>
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <% blogData.forEach(blog => { %>
+              <div class="col-md-4" style="width: 25%;">
+                  <div class="card mb-4">
+                      <img src="../../<%= blog.blog_img %>" class="card-img-top" alt="<%= blog.title %>" style="height: 250px;">
+                      <div class="card-body">
+                          <h5 class="card-title"><%= blog.title %></h5>
+                          <p class="card-text"><%= blog.content %></p>
+                          <% if(comment.length > 0){ %>
+                            <h4 class="mb-3"> Comments :</h4>
+                            <% comment.forEach(comment => { %>
+                              <div class="mb-1">
+                                <% if(comment.blog && comment.blog._id.toString() == blog._id.toString()){ %>
+                                  <h5 class="m-0" style="font-size: 13px;">Comment : <%= comment.comment %></h5>
+                                  <span style="font-size: 13px;">Commeted by <%= comment.user.name %></span>
+                                  <% if(data._id.toString() == comment.user._id.toString()){ %>
+                                    <a href ="/deletComment/<%= comment._id %>" class="ms-2 text-danger" style="font-size: 13px;">delete</a>
+                                  <% } %>
+                                <% } %>
+                              </div>
+                            <%})%>
+                          <% } %>
+                            <form action="/addComment/<%= blog._id %>" method="post" class="d-flex">
+                              <input type="text" name="comment" id="comment" placeholder="Add Comment"class="form-control p-1 me-2">
+                              <button class="btn btn-primary">Add</button>
+                            </form>
+                      </div>
                   </div>
               </div>
+              <% }) %>
           </div>
-          <% }) %>
-      </div>
+                <div class="content-backdrop fade"></div>
+              </div>
+              </div>
     </div>
+    
   </div>
+
+  
   <div class="position-fixed text-white bg-primary ps -3 pe-3 p-2 m-4 rounded end-0 bottom-0">
     <span>welcome <%= data.username %>....</span>
   </div>

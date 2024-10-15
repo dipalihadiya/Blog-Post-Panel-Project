@@ -8,6 +8,7 @@ const logIn = (req , res) => {
 
 const logInController = async (req , res) => {
     console.log("log innnn");
+    req.flash('success' , 'login success');
     
     res.redirect('/');
 }

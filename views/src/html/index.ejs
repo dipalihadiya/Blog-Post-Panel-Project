@@ -7,8 +7,14 @@
   <title>Modernize Free</title>
   <link rel="shortcut icon" type="image/png" href="src/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="src/assets/css/styles.min.css" />
+                     
 </head>
 
+  <% if (msg=' ') { %>
+  <div class="alert alert-warning" role="alert">
+    <%= msg %>
+  </div>
+<% } %>
 <body>
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
@@ -49,46 +55,81 @@
                 <span class="hide-menu">Register</span>
               </a>
             </li>
-            <!-- blog -->
+
+            <!-- topic -->
+
             <li class="nav-small-cap">
-            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">BLOG</span>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="/addBlog" aria-expanded="false">
-              <span>
-                <i class="ti ti-login"></i>
-              </span>
-              <span class="hide-menu">Add Blogs</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="/viewBlog" aria-expanded="false">
-              <span>
-                <i class="ti ti-login"></i>
-              </span>
-              <span class="hide-menu">View Blog</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="/allBlog" aria-expanded="false">
-              <span>
-                <i class="ti ti-login"></i>
-              </span>
-              <span class="hide-menu">All Blogs Page</span>
-            </a>
-          </li>
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">TOPIC</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/addTopics" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Add Topic</span>
+              </a>
+            </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link" href="/subTopic" aria-expanded="false">
+                      <span>
+                        <i class="ti ti-login"></i>
+                      </span>
+                      <span class="hide-menu">Sub Topics</span>
+                    </a>
+                  </li>
+                  <li class="sidebar-item">
+                    <a class="sidebar-link" href="/viewTopics" aria-expanded="false">
+                      <span>
+                        <i class="ti ti-login"></i>
+                      </span>
+                      <span class="hide-menu">View Topics</span>
+                    </a>
+                  </li>
+
+
+                  <!-- blog -->
+
+                  
+                  <li class="nav-small-cap">
+                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                    <span class="hide-menu">BLOG</span>
+                  </li>
+                 
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/addBlog" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Add Blogs</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/viewBlog" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">View Blog</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/allBlog" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">All Blogs Page</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./signUp" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user-plus"></i>
+                </span>
+                <span class="hide-menu">Register</span>
+              </a>
+            </li>
           
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./signUp" aria-expanded="false">
-              <span>
-                <i class="ti ti-user-plus"></i>
-              </span>
-              <span class="hide-menu">Register</span>
-            </a>
-          </li>
-          
-          </ul>
+
           <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
             <div class="d-flex">
               <div class="unlimited-access-title me-3">
@@ -142,10 +183,7 @@
                       <i class="ti ti-mail fs-6"></i>
                       <p class="mb-0 fs-3">change password</p>
                     </a>
-                    <a href="/forgot-password" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">forgot password</p>
-                    </a>
+                   
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-list-check fs-6"></i>
                       <p class="mb-0 fs-3">My Task</p>

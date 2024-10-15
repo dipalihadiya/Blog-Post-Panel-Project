@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const db = require('./config/db');
 const passport = require('./config/passportConfig');
 const express_session = require('express-session');
+const flash = require('connect-flash');
 
 
 app.set('view engine', 'ejs');
@@ -28,6 +29,8 @@ app.use('/assets',express.static(path.join(__dirname , "/assets")))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(flash());
 
 app.use('/',router)
 app.listen(port , (err) =>{

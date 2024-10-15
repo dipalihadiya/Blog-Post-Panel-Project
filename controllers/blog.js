@@ -1,6 +1,6 @@
 // controllers/blog.js
 const blogModel = require('../models/blog/blogModel'); // Ensure the path is correct
-
+const comment = require('../models/comment/commentModel');
 const addBlog = async (req, res) => {
     console.log("add blog");
     res.render('src/html/addBlog');
@@ -23,7 +23,8 @@ const addBlogController = async (req, res) => {
     const data = {
         title: req.body.title,
         content: req.body.content,
-        blog_img:  req.file ? req.file.path : null
+        blog_img:  req.file ? req.file.path : null,
+        user_id : req.user._id,
     };
 
     let newBlog = new blogModel(data);
@@ -65,8 +66,15 @@ const deleteController = async (req, res) => {
 // all blogs
 
 const allBlog = async (req, res) => {
-    const blogData = await blogModel.find({});
-    res.render('src/html/allBlog', { data: req.user, blogData: blogData });
+    console.log("view blog controller");
+    const commnetData = await comment.find({});
+    const blogData = await blogModel.find({})
+
+        console.log("blogData", blogData);
+        res.render('src/html/allBlog', { data: req.user, blogData: blogData , comment: commnetData });
 }
 
-module.exports = { addBlog, addBlogController, viewBlog, editController, updateController, deleteController  , allBlog };
+
+
+
+module.exports = { addBlog, addBlogController, viewBlog, editController, updateController, deleteController  , allBlog};
